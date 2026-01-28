@@ -1,5 +1,6 @@
 <script setup>
     import axios from 'axios';
+import { ref } from 'vue';
     import { useRoute, useRouter } from 'vue-router';
 
     const route = useRoute()
@@ -9,10 +10,14 @@
         router.push("/pokemons")
     }
 
+    const poke = ref({});
+
     const getData = async () => {
         try {
             const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${route.params.name}`);
-            console.log(data)
+            console.log(data);
+            poke.value = data;
+            console.log()
         } catch (error) {
             console.log(error)
         }
@@ -23,6 +28,7 @@
 </script>
 
 <template>
+    <img :src="poke.sprites.other['official-artwork'].front_default" alt="">
     <h1>Pokemon Name: {{ $route.params.name }}</h1>
     <button @click="back">Back</button>
 </template>
