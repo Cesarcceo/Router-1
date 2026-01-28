@@ -20,7 +20,7 @@
 <template>
     <h1>Pokemons</h1>
     <ul>
-        <li v-for="poke in pokemons" :key="name" >
+        <li v-for="poke in pokemons" :key="poke" >
             <router-link :to="`/pokemons/${poke.name}`">{{ poke.name }}</router-link>
         </li>
     </ul>
