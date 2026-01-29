@@ -5,7 +5,7 @@
 
     // const pokemons = ref([])
 
-    const {data, loading, getData} = useGetData()
+    const {data, loading, getData, error} = useGetData()
 
     // const getData = async () => {
     //     try {
@@ -22,6 +22,7 @@
 <template>
     <h1>Pokemons</h1>
     <p v-if="loading">Loading...</p>
+    <div class="alert alert-danger" v-if="error">{{ error }}</div>
     <div v-if="data">
         <ul>
             <li v-for="poke in data.results" :key="poke" >

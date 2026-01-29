@@ -25,7 +25,7 @@
     //     }
     // }
 
-    const {data, loading, getData} = useGetData()
+    const {data, loading, getData, error} = useGetData()
 
     getData(`https://pokeapi.co/api/v2/pokemon/${route.params.name}`)
 
@@ -33,6 +33,7 @@
 
 <template>
     <p v-if="loading">Loading...</p>
+    <div class="alert alert-danger" v-if="error">{{ error }}</div>
     <div v-if="data">
         <img :src="data.sprites?.other['official-artwork'].front_default" alt="">
         <h1>Pokemon Name: {{ $route.params.name }}</h1>
