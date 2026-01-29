@@ -20,6 +20,7 @@
             console.log()
         } catch (error) {
             console.log(error)
+            poke.value = null
         }
     }
 
@@ -28,7 +29,10 @@
 </script>
 
 <template>
-    <img :src="poke.sprites?.other['official-artwork'].front_default" alt="">
-    <h1>Pokemon Name: {{ $route.params.name }}</h1>
+    <div v-if="poke">
+        <img :src="poke.sprites?.other['official-artwork'].front_default" alt="">
+        <h1>Pokemon Name: {{ $route.params.name }}</h1>
+    </div>
+    <h1 v-else>Ese pokeon no existe</h1>
     <button type="button" class="btn btn-primary" @click="back" >Back</button>
 </template>
