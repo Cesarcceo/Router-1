@@ -1,11 +1,15 @@
 <script setup>
-    import axios from 'axios';
-    import { ref } from 'vue';
+    // import axios from 'axios';
+    // import { ref } from 'vue';
     import { useRoute, useRouter } from 'vue-router';
     import { useGetData } from '@/composables/getData'
+    import { useFavoritoStore } from '@/store/favoritos';
 
     const route = useRoute()
     const router = useRouter()
+    const useFavorito = useFavoritoStore()
+
+    const {add} = useFavorito
 
     const back = () => {
         router.push("/pokemons")
@@ -37,6 +41,7 @@
     <div v-if="data">
         <img :src="data.sprites?.other['official-artwork'].front_default" alt="">
         <h1>Pokemon Name: {{ $route.params.name }}</h1>
+        <button class="btn btn-primary my-2" @click="add(data)"> Agregar a favoritos</button>
     </div>
     <h1 v-else>Ese pokeon no existe</h1>
     <button type="button" class="btn btn-primary" @click="back" >Back</button>
