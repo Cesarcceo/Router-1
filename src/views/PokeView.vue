@@ -1,6 +1,6 @@
 <script setup>
     import axios from 'axios';
-import { ref } from 'vue';
+    import { ref } from 'vue';
     import { useRoute, useRouter } from 'vue-router';
 
     const route = useRoute()
@@ -28,7 +28,7 @@ import { ref } from 'vue';
 </script>
 
 <template>
-    <img :src="poke.sprites.other['official-artwork'].front_default" alt="">
+    <img :src="poke.sprites?.other['official-artwork'].front_default" alt="">
     <h1>Pokemon Name: {{ $route.params.name }}</h1>
-    <button @click="back">Back</button>
+    <button type="button" class="btn btn-primary" @click="back" >Back</button>
 </template>
