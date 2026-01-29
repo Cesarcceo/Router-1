@@ -22,11 +22,11 @@
 
 <template>
     <h1>Pokemons</h1>
-    <p v-if="loading">Loading...</p>
+    <p v-if="loading" class="h1">Loading...</p>
     <div class="alert alert-danger" v-if="error">{{ error }}</div>
     <div v-if="data">
-        <ul>
-            <li v-for="poke in data.results" :key="poke" >
+        <ul class="list-group">
+            <li v-for="poke in data.results" :key="poke" class="list-group-item">
                 <router-link :to="`/pokemons/${poke.name}`">{{ poke.name }}</router-link>
             </li>
         </ul>
